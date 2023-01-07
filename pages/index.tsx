@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ping, fetchCoinData } from "../apis/coingecko";
-import Layout from "./components/Layout";
+import Layout from "../components/Layout";
 
 //const API_URL = "https://coingecko.p.rapidapi.com/coins/markets";
 
