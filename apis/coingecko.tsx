@@ -3,6 +3,27 @@ import axios from "axios";
 
 const baseUrl = "https://api.coingecko.com/api/v3";
 
+export const coingeckoApi = axios.create({
+  baseURL: baseUrl,
+});
+
+// Cryptocurrency portfolio
+export const crypto_watchlist = {
+  avax: "avalanche-2",
+  btc: "bitcoin",
+  dot: "polkadot",
+  eth: "ethereum",
+  gala: "gala",
+  mana: "decentraland",
+  nexo: "nexo",
+  pyr: "vulcan-forged",
+  usdt: "tether",
+  xrp: "ripple",
+};
+
+// Fiat currencies
+export const currencies = { usd: "usd", euro: "eur" };
+
 // Endpoints
 const endpoints = {
   ping: "/ping",
@@ -14,7 +35,8 @@ const endpoints = {
   },
 };
 
-const structureUrl = (endpoint: string, params?: object): string => {
+// Structures url by concat. based url, endpoints and params
+const urlBuilder = (endpoint: string, params?: object): string => {
   let url = `${baseUrl}${endpoint}`;
 
   if (params) {
@@ -29,7 +51,7 @@ const structureUrl = (endpoint: string, params?: object): string => {
 // Check API status
 export const ping = async () => {
   try {
-    const response = await axios.get(`${structureUrl(endpoints.ping)}`);
+    const response = await axios.get(`${urlBuilder(endpoints.ping)}`);
 
     console.log(`CoinGecko APIs: `, response.data);
 
@@ -43,14 +65,13 @@ export const fetchCoinData = async () => {
   try {
     const filter = {
       vs_currency: "usd",
-      ids: "ripple, bitcoin",
+      ids: Object.values(crypto_watchlist).join(","),
       page: "1",
       per_page: "10",
       order: "market_cap_desc",
     };
-
     const response = await axios.get(
-      `${structureUrl(endpoints.coins.market, filter)}`
+      `${urlBuilder(endpoints.coins.market, filter)}`
     );
 
     console.log(`Coins: `, response.data);
