@@ -14,13 +14,13 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <div className="">
       <Layout />{" "}
       <div>
         <AvailableCryptos />
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

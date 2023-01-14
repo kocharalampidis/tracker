@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IoLogoUsd } from "react-icons/io";
 import { fetchCoinData } from "../apis/coingecko";
 
 const AvailableCryptos = () => {
@@ -19,7 +20,34 @@ const AvailableCryptos = () => {
   return (
     <div>
       {data ? (
-        <div>
+        <div className="">
+          {data.map((item: any) => (
+            <div className="" key={item.id}>
+              <div className="card card-compact w-80 bg-base-100 shadow-xl m-2">
+                <figure>
+                  <img src={item.image} alt="logo" width="36px" height="25px" />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title">{item.name}</h2>
+                  <p>If a dog chews shoes whose shoes does he choose?</p>
+                  <div className="text-right">
+                    <span className="">${item.current_price}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div>not loaded</div>
+      )}
+    </div>
+  );
+};
+
+export default AvailableCryptos;
+{
+  /* <div>
           <div className="row">
             {data.map((item, index) => (
               <div className="col-3" key={index}>
@@ -34,12 +62,5 @@ const AvailableCryptos = () => {
               </div>
             ))}
           </div>
-        </div>
-      ) : (
-        <div>not loaded</div>
-      )}
-    </div>
-  );
-};
-
-export default AvailableCryptos;
+        </div> */
+}
