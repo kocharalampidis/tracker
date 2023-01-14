@@ -1,26 +1,25 @@
 import { useEffect, useState } from "react";
-import { IoLogoUsd } from "react-icons/io";
 import { fetchCoinData } from "../apis/coingecko";
 
 const AvailableCryptos = () => {
   const [data, setData] = useState();
-  const [flag, setfFlag] = useState(false);
 
   const getCoins = async () => {
     const response = await fetchCoinData();
     setData(response);
-    console.log(response);
     return response;
   };
 
   useEffect(() => {
+    // setInterval(() => {
     getCoins();
+    // }, 20000);
   }, []);
 
   return (
     <div>
       {data ? (
-        <div className="">
+        <div className="grid grid-cols-3 gap-2">
           {data.map((item: any) => (
             <div className="" key={item.id}>
               <div className="card card-compact w-80 bg-base-100 shadow-xl m-2">
@@ -29,9 +28,11 @@ const AvailableCryptos = () => {
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{item.name}</h2>
-                  <p>If a dog chews shoes whose shoes does he choose?</p>
+                  <p>24h: {item.price_change_percentage_24h}%</p>
                   <div className="text-right">
-                    <span className="">${item.current_price}</span>
+                    <span className="badge badge-secondary badge-outline">
+                      ${item.current_price}
+                    </span>
                   </div>
                 </div>
               </div>
