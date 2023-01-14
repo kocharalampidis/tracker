@@ -13,6 +13,7 @@ export const crypto_watchlist = {
   btc: "bitcoin",
   dot: "polkadot",
   eth: "ethereum",
+  flare: "flare-networks",
   gala: "gala",
   mana: "decentraland",
   nexo: "nexo",
@@ -70,6 +71,7 @@ export const fetchCoinData = async () => {
       per_page: "10",
       order: "market_cap_desc",
     };
+
     const response = await axios.get(
       `${urlBuilder(endpoints.coins.market, filter)}`
     );
