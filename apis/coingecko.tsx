@@ -50,7 +50,7 @@ const urlBuilder = (endpoint: string, params?: object): string => {
 };
 
 // Check API status
-export const ping = async () => {
+export const pingCoingecko = async () => {
   try {
     const response = await axios.get(`${urlBuilder(endpoints.ping)}`);
 
