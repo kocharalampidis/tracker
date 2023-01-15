@@ -2,13 +2,21 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { fetchCoinData } from "../apis/coingecko";
 
+type CoinData = {
+  id: string;
+  name: string;
+  symbol: string;
+  image: string;
+  current_price: number;
+  price_change_percentage_24h: number;
+};
+
 const AvailableCryptos = () => {
-  const [data, setData] = useState();
+  const [coins, setCoins] = useState<CoinData[]>([]);
 
   const getCoins = async () => {
     const response = await fetchCoinData();
-    setData(response);
-    return response;
+    setCoins(response);
   };
 
   useEffect(() => {
@@ -19,20 +27,20 @@ const AvailableCryptos = () => {
 
   return (
     <div>
-      {data ? (
+      {coins ? (
         <div className="grid grid-cols-3 gap-2">
-          {data.map((item: any) => (
-            <div className="" key={item.id}>
+          {coins.map((coin: CoinData) => (
+            <div className="" key={coin.id}>
               <div className="card card-compact w-80 bg-base-100 shadow-xl m-2">
                 <figure>
-                  <Image src={item.image} alt="logo" width={30} height={25} />
+                  <Image src={coin.image} alt="logo" width={30} height={25} />
                 </figure>
                 <div className="card-body">
-                  <h2 className="card-title">{item.name}</h2>
-                  <p>24h: {item.price_change_percentage_24h}%</p>
+                  <h2 className="card-title">{coin.name}</h2>
+                  <p>24h: {coin.price_change_percentage_24h}%</p>
                   <div className="text-right">
                     <span className="badge badge-secondary badge-outline">
-                      ${item.current_price}
+                      ${coin.current_price}
                     </span>
                   </div>
                 </div>
@@ -48,21 +56,3 @@ const AvailableCryptos = () => {
 };
 
 export default AvailableCryptos;
-{
-  /* <div>
-          <div className="row">
-            {data.map((item, index) => (
-              <div className="col-3" key={index}>
-                <div className="card">
-                  <img src={item.image} alt="logo" width="25px" height="25px" />
-                  <div className="card-body bg-light">
-                    <h5 className="card-title">{item.name}</h5>
-                    <p className="card-text">{item.symbol}</p>
-                    <p className="card-text">${item.current_price}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div> */
-}
