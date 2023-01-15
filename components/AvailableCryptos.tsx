@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { fetchCoinData } from "../apis/coingecko";
 
@@ -24,7 +25,7 @@ const AvailableCryptos = () => {
             <div className="" key={item.id}>
               <div className="card card-compact w-80 bg-base-100 shadow-xl m-2">
                 <figure>
-                  <img src={item.image} alt="logo" width="36px" height="25px" />
+                  <Image src={item.image} alt="logo" width={30} height={25} />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{item.name}</h2>
