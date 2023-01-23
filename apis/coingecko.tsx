@@ -7,6 +7,17 @@ export const coingeckoApi = axios.create({
   baseURL: baseUrl,
 });
 
+// Endpoints
+const endpoints = {
+  ping: "/ping",
+  coins: {
+    id: "/coins/{id}", // get current data for a coin.
+    id_list: "/coins/list", // list all supported coins id
+    market: "/coins/markets", // obtain all the coins market data (price, market cap, volume)
+    market_chart: "/coins/{id}/market_chart", // get historical market data include price, market cap, and 24h volume
+  },
+};
+
 // Cryptocurrency portfolio
 export const crypto_watchlist = {
   avax: "avalanche-2",
@@ -25,23 +36,13 @@ export const crypto_watchlist = {
 // Fiat currencies
 export const currencies = { usd: "usd", euro: "eur" };
 
-// Endpoints
-const endpoints = {
-  ping: "/ping",
-  coins: {
-    id: "/coins/{id}", // get current data for a coin.
-    id_list: "/coins/list", // list all supported coins id
-    market: "/coins/markets", // obtain all the coins market data (price, market cap, volume)
-    market_chart: "/coins/{id}/market_chart", // get historical market data include price, market cap, and 24h volume
-  },
-};
-
 // Structures url by concat. based url, endpoints and params
 const urlBuilder = (endpoint: string, params?: object): string => {
   let url = `${baseUrl}${endpoint}`;
 
   if (params) {
-    const queryString = new URLSearchParams(params).toString();
+    const queryString = params.toString();
+    //new URLSearchParams(params).toString();
     url += `?${queryString}`;
   }
 
@@ -50,7 +51,7 @@ const urlBuilder = (endpoint: string, params?: object): string => {
 };
 
 // Check API status
-export const ping = async () => {
+export const pingCoingecko = async () => {
   try {
     const response = await axios.get(`${urlBuilder(endpoints.ping)}`);
 
