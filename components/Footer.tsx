@@ -3,7 +3,7 @@ import React from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 const Footer = () => (
-  <footer className="footer items-center p-2 bg-neutral text-neutral-content bottom-0 mt-2">
+  <footer className="footer items-center p-2 bg-neutral text-neutral-content bottom-0 fixed mt-2">
     <div className="items-center grid-flow-col">
       <p>Copyright © 2023 - All right reserved</p>
     </div>
