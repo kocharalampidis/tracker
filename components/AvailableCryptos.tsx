@@ -33,7 +33,7 @@ const AvailableCryptos = () => {
             <div className="" key={coin.id}>
               <div className="card card-compact w-80 bg-base-100 shadow-xl m-2">
                 <figure>
-                  <Image src={coin.image} alt="logo" width={30} height={25} />
+                  <img src={coin.image} alt="logo" className={"w-7 h-7"} />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{coin.name}</h2>

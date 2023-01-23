@@ -37,16 +37,15 @@ export const crypto_watchlist = {
 export const currencies = { usd: "usd", euro: "eur" };
 
 // Structures url by concat. based url, endpoints and params
-const urlBuilder = (endpoint: string, params?: object): string => {
+const urlBuilder = (endpoint: string, params?: any): string => {
   let url = `${baseUrl}${endpoint}`;
 
   if (params) {
-    const queryString = params.toString();
-    //new URLSearchParams(params).toString();
+    const queryString = new URLSearchParams(params);
     url += `?${queryString}`;
   }
 
-  console.log(endpoint, params, url);
+  //console.log(endpoint, params, url);
   return url;
 };
 
