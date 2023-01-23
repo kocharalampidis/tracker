@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['assets.coingecko.com'],
+    loader: "akamai",
+    path: "",
+    domains: ["assets.coingecko.com"],
   },
-  reactStrictMode: true,
-}
 
-module.exports = nextConfig
+  reactStrictMode: true,
+};
+
+module.exports = nextConfig;
