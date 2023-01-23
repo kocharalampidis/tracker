@@ -41,7 +41,8 @@ const urlBuilder = (endpoint: string, params?: object): string => {
   let url = `${baseUrl}${endpoint}`;
 
   if (params) {
-    const queryString = new URLSearchParams(params).toString();
+    const queryString = params.toString();
+    //new URLSearchParams(params).toString();
     url += `?${queryString}`;
   }
 
