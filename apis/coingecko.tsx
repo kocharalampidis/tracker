@@ -31,6 +31,7 @@ export const crypto_watchlist = {
   pyr: "vulcan-forged",
   usdt: "tether",
   xrp: "ripple",
+  sha: "safe-haven",
 };
 
 // Fiat currencies
@@ -68,7 +69,7 @@ export const fetchCoinData = async () => {
       vs_currency: "usd",
       ids: Object.values(crypto_watchlist).join(","),
       page: "1",
-      per_page: "10",
+      per_page: "20",
       order: "market_cap_desc",
     };
 

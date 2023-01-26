@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { fetchCoinData } from "../apis/coingecko";
+import LineChart from "./LineChart";
 
 type CoinData = {
   id: string;
@@ -42,6 +43,10 @@ const AvailableCryptos = () => {
                     <span className="badge badge-secondary badge-outline">
                       ${coin.current_price}
                     </span>
+                  </div>
+                  <div>
+                    {" "}
+                    <LineChart />{" "}
                   </div>
                 </div>
               </div>
