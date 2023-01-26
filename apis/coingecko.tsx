@@ -46,7 +46,7 @@ const urlBuilder = (endpoint: string, params?: any): string => {
     url += `?${queryString}`;
   }
 
-  //console.log(endpoint, params, url);
+  console.log(endpoint, params, url);
   return url;
 };
 
@@ -78,6 +78,30 @@ export const fetchCoinData = async () => {
     );
 
     console.log(`Coins: `, response.data);
+
+    return response.data;
+  } catch (errors) {
+    console.error(errors);
+  }
+};
+
+export const fetchCharts = async () => {
+  try {
+    // fetch for each coin timestamp / price
+    // create object: {coin: id, labels: [timestamp], prices:[price]}
+    const filter = {
+      id: "ripple",
+      vs_currency: "usd",
+      days: "1",
+      interval: "",
+    };
+
+    const response = await axios.get(
+      // `${urlBuilder(endpoints.coins.market_chart, filter)}`
+      "https://api.coingecko.com/api/v3/coins/ripple/market_chart?vs_currency=usd&days=1"
+    );
+
+    console.log(`MarketCarts: `, response.data);
 
     return response.data;
   } catch (errors) {

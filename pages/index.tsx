@@ -18,7 +18,7 @@ const Home = () => {
         <AvailableCryptos />
       </div>
       <div>{/* <LineChart /> */}</div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
