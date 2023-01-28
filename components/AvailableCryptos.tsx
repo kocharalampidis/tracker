@@ -39,14 +39,20 @@ const AvailableCryptos = () => {
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{coin.name}</h2>
-                  <p>24h: {coin.price_change_percentage_24h}%</p>
+
                   <div className="text-right">
                     <span className="badge badge-secondary badge-outline">
                       ${coin.current_price}
                     </span>
                   </div>
                   <div>
-                    <LineChart coinId={coin.id} />
+                    <LineChart
+                      coinId={coin.id}
+                      percentage_change={coin.price_change_percentage_24h}
+                    />
+                    {/* <p className="text-right">
+                      24h: {coin.price_change_percentage_24h}%
+                    </p> */}
                   </div>
                 </div>
               </div>

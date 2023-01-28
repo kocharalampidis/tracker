@@ -7,9 +7,10 @@ Chart.register(...registerables);
 
 interface Props {
   coinId: string;
+  percentage_change: number;
 }
 
-const LineChart = ({ coinId }: Props) => {
+const LineChart = ({ coinId, percentage_change }: Props) => {
   const [chart, setChart] = useState<any>({});
 
   const getMarketCharts = async () => {
@@ -21,25 +22,8 @@ const LineChart = ({ coinId }: Props) => {
     datasets: [
       {
         pointRadius: 0,
-        // label: "# of Votes",
+        label: `24h: ${percentage_change}%`,
         data: chart?.prices,
-        // backgroundColor: [
-        //   "#007D9C",
-        //   "#244D70",
-        //   "#D123B3",
-        //   "#F7E018",
-        //   "#fff",
-        //   "#FE452A",
-        // ],
-        // borderColor: [
-        //   "rgba(255,99,132,1)",
-        //   "rgba(54, 162, 235, 1)",
-        //   "rgba(255, 206, 86, 1)",
-        //   "rgba(75, 192, 192, 1)",
-        //   "rgba(153, 102, 255, 1)",
-        //   "rgba(255, 159, 64, 1)",
-        // ],
-        // borderWidth: 1,
       },
     ],
   };
@@ -48,7 +32,13 @@ const LineChart = ({ coinId }: Props) => {
     responsive: true,
     plugins: {
       legend: {
-        display: false,
+        display: true,
+        position: "bottom",
+        align: "end",
+        labels: {
+          boxWidth: 0,
+          color: "#3e4247",
+        },
       },
     },
 
@@ -88,7 +78,7 @@ const LineChart = ({ coinId }: Props) => {
     <div>
       {chart ? (
         <div style={{ textAlign: "center" }}>
-          <Line data={data} options={options} />
+          <Line data={data} options={options} width={0.3} height={0.3} />
         </div>
       ) : (
         <div>spinner</div>
