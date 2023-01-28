@@ -32,7 +32,7 @@ const CryptoWatchList: NextPage = () => {
         <div className="grid grid-cols-3 gap-2">
           {coins.map((coin: CoinData) => (
             <div className="mb-4" key={coin.id}>
-              <div className="card card-compact w-80 bg-base-100 shadow-xl m-2">
+              <div className="card card-compact bg-base-100 shadow-xl m-2">
                 <figure>
                   <img src={coin.image} alt="logo" className={"w-7 h-7"} />
                 </figure>
@@ -46,7 +46,7 @@ const CryptoWatchList: NextPage = () => {
                     />
                     <div className="text-right">
                       <span className="badge badge-secondary badge-outline">
-                        ${coin.current_price.toFixed(4)}
+                        ${coin.current_price}
                       </span>
                     </div>
                   </div>

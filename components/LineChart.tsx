@@ -22,7 +22,7 @@ const LineChart = ({ coinId, percentage_change }: Props) => {
     datasets: [
       {
         pointRadius: 0,
-        label: `24h: ${percentage_change}%`,
+        label: `24h: ${percentage_change.toFixed(4)}%`,
         data: chart?.prices,
       },
     ],
@@ -77,10 +77,12 @@ const LineChart = ({ coinId, percentage_change }: Props) => {
     <div>
       {chart ? (
         <div style={{ textAlign: "center" }}>
-          <Line data={data} options={options} width={0.3} height={0.3} />
+          <Line data={data} options={options} width={"3px"} height={"1.5px"} />
         </div>
       ) : (
-        <div>spinner</div>
+        <div>
+          <progress className="progress w-56"> Loading...</progress>
+        </div>
       )}
     </div>
   );
