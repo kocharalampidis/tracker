@@ -77,7 +77,7 @@ export const fetchCoinData = async () => {
       `${urlBuilder(endpoints.coins.market, filter)}`
     );
 
-    console.log(`Coins: `, response.data);
+    console.log(`Coins: `, response.data[0].current_price.toFixed(4));
 
     return response.data;
   } catch (errors) {

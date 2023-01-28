@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AvailableCryptos from "../components/AvailableCryptos";
+import CryptoWatchList from "../components/CryptoWatchList";
 import Footer from "../components/Footer";
 import Layout from "../components/Layout";
 
@@ -13,9 +13,9 @@ const Home = () => {
     <div className="">
       <Layout />{" "}
       <div>
-        <AvailableCryptos />
+        <CryptoWatchList />
       </div>
-      <div className="mt-10">
+      <div className="mt-16">
         <Footer />
       </div>
     </div>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Layout = () => {
   return (
     <div className="navbar border border-gray-200 ">
@@ -24,7 +26,7 @@ const Layout = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
+              <Link href={"/cryptoWatchList"}>Cryptos</Link>{" "}
             </li>
             <li>
               <a>Item 3</a>

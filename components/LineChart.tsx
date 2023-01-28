@@ -37,7 +37,10 @@ const LineChart = ({ coinId, percentage_change }: Props) => {
         align: "end",
         labels: {
           boxWidth: 0,
-          color: "#3e4247",
+          color: `${percentage_change > 0 ? "#02cc49" : "#a10000"}`,
+          font: {
+            size: 14,
+          },
         },
       },
     },
