@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { fetchCoinData } from "../apis/coingecko";
 import LineChart from "./LineChart";
@@ -19,7 +18,6 @@ const AvailableCryptos = () => {
     const response = await fetchCoinData();
     setCoins(response);
   };
-  // console.log(coins[0].id);
 
   useEffect(() => {
     // setInterval(() => {

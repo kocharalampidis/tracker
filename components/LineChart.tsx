@@ -17,7 +17,7 @@ const LineChart = ({ coinId, percentage_change }: Props) => {
     setChart(await fetchCharts(coinId));
   };
 
-  const data = {
+  const data: any = {
     labels: chart?.labels,
     datasets: [
       {
@@ -28,7 +28,7 @@ const LineChart = ({ coinId, percentage_change }: Props) => {
     ],
   };
 
-  const options = {
+  const options: any = {
     responsive: true,
     plugins: {
       legend: {
@@ -44,25 +44,21 @@ const LineChart = ({ coinId, percentage_change }: Props) => {
 
     // Modify the axis by adding scales
     scales: {
-      // to remove the labels
       x: {
         ticks: {
           display: false,
         },
 
-        // to remove the x-axis grid
         grid: {
           display: false,
         },
       },
 
-      // to remove the y-axis labels
       y: {
         ticks: {
           display: true,
         },
 
-        // to remove the y-axis grid
         grid: {
           display: false,
         },
