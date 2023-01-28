@@ -19,6 +19,7 @@ const AvailableCryptos = () => {
     const response = await fetchCoinData();
     setCoins(response);
   };
+  // console.log(coins[0].id);
 
   useEffect(() => {
     // setInterval(() => {
@@ -45,8 +46,7 @@ const AvailableCryptos = () => {
                     </span>
                   </div>
                   <div>
-                    {" "}
-                    <LineChart />{" "}
+                    <LineChart coinId={coin.id} />
                   </div>
                 </div>
               </div>

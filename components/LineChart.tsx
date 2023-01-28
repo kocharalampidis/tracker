@@ -3,33 +3,26 @@ import { fetchCharts } from "../apis/coingecko";
 
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
-import { PriceData } from "../components/Data";
-import { TEMPORARY_REDIRECT_STATUS } from "next/dist/shared/lib/constants";
 Chart.register(...registerables);
 
-const LineChart = () => {
-  const [coins, setCoins] = useState<any>();
-  const temp = {
-    id: "",
-    labels: PriceData.flatMap((num) => num[0]),
-    prices: PriceData.flatMap((num) => num[1]),
-  };
-  //   const getMarketCharts = async () => {
-  //     const response = await fetchCharts();
-  //     setCoins(response);
-  //   };
+interface Props {
+  coinId: string;
+}
 
-  //   useEffect(() => {
-  //     getMarketCharts();
-  //   }, []);
+const LineChart = ({ coinId }: Props) => {
+  const [chart, setChart] = useState<any>({});
+
+  const getMarketCharts = async () => {
+    setChart(await fetchCharts(coinId));
+  };
 
   const data = {
-    labels: temp.labels,
+    labels: chart?.labels,
     datasets: [
       {
         pointRadius: 0,
         // label: "# of Votes",
-        data: temp.prices,
+        data: chart?.prices,
         // backgroundColor: [
         //   "#007D9C",
         //   "#244D70",
@@ -88,17 +81,18 @@ const LineChart = () => {
   };
 
   useEffect(() => {
-    console.log(temp);
+    getMarketCharts();
   }, []);
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <Line
-        data={data}
-        //width={5}
-        //height={5}
-        options={options}
-      />
+    <div>
+      {chart ? (
+        <div style={{ textAlign: "center" }}>
+          <Line data={data} options={options} />
+        </div>
+      ) : (
+        <div>spinner</div>
+      )}
     </div>
   );
 };

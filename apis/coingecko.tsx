@@ -85,7 +85,7 @@ export const fetchCoinData = async () => {
   }
 };
 
-export const fetchCharts = async () => {
+export const fetchCharts = async (coinId: string) => {
   try {
     // fetch for each coin timestamp / price
     // create object: {coin: id, labels: [timestamp], prices:[price]}
@@ -96,14 +96,20 @@ export const fetchCharts = async () => {
       interval: "",
     };
 
+    console.log("coingeck", coinId);
+
     const response = await axios.get(
       // `${urlBuilder(endpoints.coins.market_chart, filter)}`
-      "https://api.coingecko.com/api/v3/coins/ripple/market_chart?vs_currency=usd&days=1"
+      `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=1`
     );
 
-    console.log(`MarketCarts: `, response.data);
+    const chartData = {
+      labels: response.data.market_caps.flatMap((num: any) => num[0]),
+      prices: response.data.prices.flatMap((num: any) => num[1]),
+    };
+    console.log("chartData", response.data);
 
-    return response.data;
+    return chartData;
   } catch (errors) {
     console.error(errors);
   }
