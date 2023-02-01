@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { fetchCoinData } from "../apis/coingecko";
+import Filter from "./FIlter";
 import LineChart from "./LineChart";
 
 type CoinData = {
@@ -28,6 +29,12 @@ const CryptoWatchList: NextPage = () => {
 
   return (
     <div className="m-8">
+      <div className="flex">
+        {" "}
+        <Filter />
+        <Filter />
+      </div>
+
       {coins ? (
         <div className="grid grid-cols-3 gap-2">
           {coins.map((coin: CoinData) => (
