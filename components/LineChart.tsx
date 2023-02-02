@@ -7,14 +7,15 @@ Chart.register(...registerables);
 
 interface Props {
   coinId: string;
+  days: string;
   percentage_change: number;
 }
 
-const LineChart = ({ coinId, percentage_change }: Props) => {
+const LineChart = ({ coinId, percentage_change, days }: Props) => {
   const [chart, setChart] = useState<any>({});
 
   const getMarketCharts = async () => {
-    setChart(await fetchCharts(coinId));
+    setChart(await fetchCharts(coinId, days));
   };
 
   const data: any = {
@@ -71,7 +72,7 @@ const LineChart = ({ coinId, percentage_change }: Props) => {
 
   useEffect(() => {
     getMarketCharts();
-  }, []);
+  }, [days]);
 
   return (
     <div>

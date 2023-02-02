@@ -90,7 +90,7 @@ export const fetchCharts = async (coinId: string, days: string) => {
     const filter = {
       id: "ripple",
       vs_currency: "usd",
-      days: "1",
+      days: days || "1",
       interval: "",
     };
 
