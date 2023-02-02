@@ -21,17 +21,17 @@ const endpoints = {
 // Cryptocurrency portfolio
 export const crypto_watchlist = {
   avax: "avalanche-2",
-  btc: "bitcoin",
-  dot: "polkadot",
-  eth: "ethereum",
-  flare: "flare-networks",
-  gala: "gala",
-  mana: "decentraland",
-  nexo: "nexo",
-  pyr: "vulcan-forged",
-  usdt: "tether",
-  xrp: "ripple",
-  sha: "safe-haven",
+  // btc: "bitcoin",
+  // dot: "polkadot",
+  // eth: "ethereum",
+  // flare: "flare-networks",
+  // gala: "gala",
+  // mana: "decentraland",
+  // nexo: "nexo",
+  // pyr: "vulcan-forged",
+  // usdt: "tether",
+  // xrp: "ripple",
+  // sha: "safe-haven",
 };
 
 // Fiat currencies
@@ -85,7 +85,7 @@ export const fetchCoinData = async () => {
   }
 };
 
-export const fetchCharts = async (coinId: string) => {
+export const fetchCharts = async (coinId: string, days: string) => {
   try {
     const filter = {
       id: "ripple",

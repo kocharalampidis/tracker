@@ -28,46 +28,45 @@ const CryptoWatchList: NextPage = () => {
   }, []);
 
   return (
-    <div className="m-8">
-      <div className="flex">
-        {" "}
-        <Filter />
-        <Filter />
-      </div>
+    <>
+      <div className="m-8">
+        <div>
+          <Filter />
+        </div>
+        {coins ? (
+          <div className="grid grid-cols-3 gap-2">
+            {coins.map((coin: CoinData) => (
+              <div className="mb-4" key={coin.id}>
+                <div className="card card-compact bg-base-100 shadow-xl m-2">
+                  <figure>
+                    <img src={coin.image} alt="logo" className={"w-7 h-7"} />
+                  </figure>
+                  <div className="card-body">
+                    <h2 className="card-title">{coin.name}</h2>
 
-      {coins ? (
-        <div className="grid grid-cols-3 gap-2">
-          {coins.map((coin: CoinData) => (
-            <div className="mb-4" key={coin.id}>
-              <div className="card card-compact bg-base-100 shadow-xl m-2">
-                <figure>
-                  <img src={coin.image} alt="logo" className={"w-7 h-7"} />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">{coin.name}</h2>
-
-                  <div>
-                    <LineChart
-                      coinId={coin.id}
-                      percentage_change={coin.price_change_percentage_24h}
-                    />
-                    <div className="text-right">
-                      <span className="badge badge-secondary badge-outline">
-                        ${coin.current_price}
-                      </span>
+                    <div>
+                      <LineChart
+                        coinId={coin.id}
+                        percentage_change={coin.price_change_percentage_24h}
+                      />
+                      <div className="text-right">
+                        <span className="badge badge-secondary badge-outline">
+                          ${coin.current_price}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div>
-          <progress className="progress w-56"> Loading...</progress>
-        </div>
-      )}
-    </div>
+            ))}
+          </div>
+        ) : (
+          <div>
+            <progress className="progress w-56"> Loading...</progress>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
