@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchCoinData } from "../apis/coingecko";
 import Filter from "./FIlter";
 import LineChart from "./LineChart";
+import { percentage_change_days } from "../apis/constants";
 
 type CoinData = {
   id: string;
@@ -16,13 +17,6 @@ type CoinData = {
 const CryptoWatchList: NextPage = () => {
   const [coins, setCoins] = useState<CoinData[]>([]);
   const [options, setOptions] = useState<string>("1");
-  const [percentage_change_days, setPercentage_change_days] = useState([
-    "1h",
-    "24h",
-    "7d",
-    "14d",
-    "30d",
-  ]);
 
   const getCoins = async () => {
     const response = await fetchCoinData();
