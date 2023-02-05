@@ -41,9 +41,8 @@ const CryptoWatchList: NextPage = () => {
     <>
       <div className="m-8">
         <div>
-          {/* <Filter /> */}
           <div className="flex mb-2">
-            <ul className="menu menu-vertical sm:menu-horizontal md:menu-horizontal lg:menu-horizontal w-56 bg-gray-800 text-primary-content p-1 cursor-pointer rounded-box">
+            <ul className="menu sm:menu-horizontal md:menu-horizontal lg:menu-horizontal w-56 bg-gray-800 text-primary-content p-1 cursor-pointer rounded-box">
               {percentage_change_days.map((item: string, index: number) => (
                 <li key={index}>
                   <a
@@ -58,10 +57,10 @@ const CryptoWatchList: NextPage = () => {
           </div>
         </div>
         {coins ? (
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2">
             {coins.map((coin: CoinData) => (
               <div className="mb-4" key={coin.id}>
-                <div className="card card-compact bg-base-100 shadow-xl m-2">
+                <div className="card w-full card-compact bg-base-100 shadow-xl m-2">
                   <figure>
                     <img src={coin.image} alt="logo" className={"w-7 h-7"} />
                   </figure>
