@@ -16,6 +16,7 @@ const Home = () => {
         <CryptoWatchList />
       </div>
       <div className="mt-16">
+        aaaaaa
         <Footer />
       </div>
     </div>
